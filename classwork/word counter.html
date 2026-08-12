@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+
+        }
+        textarea {
+            width: 100%;
+            height: 180px;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            resize: none;
+            outline: none;
+        }
+        textarea:focus {
+            border-color: #4f46e5;
+
+        }
+        .counters {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .box{
+            width: 50%;
+            background: #f5f5ff;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .box h3{
+            color: #555;
+            margin: 0 0 10px;
+        }
+        .box p {
+            font-size: 30px;
+            font-weight: bold;
+            color: #4f46e5;
+            margin: 0;
+        }
+        .leg{
+            background-color: grey;
+        }
+    </style>
+</head>
+<body class="leg">
+
+    <div class="container">
+        <h1>Word Counter</h1>
+
+        <textarea id="textBox" placeholder="Type Something here Joor"></textarea>
+
+        <div class="counters">
+            <div class="box">
+                <h3>Words</h3>
+                <p id="wordCount">0</p>
+            </div>
+            <div class="box">
+                <h3>letters</h3>
+                <p id="letterCount">0</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const textBox =document.getElementById("textBox")
+        const wordCount=document.getElementById("wordCount")
+        const letterCount=document.getElementById("letterCount")
+
+        textBox.addEventListener("input", function () {
+            const text =textBox.value;
+
+        if (text.trim() === ""){
+            wordCount.textContent = 0;
+        } else {
+            wordCount.textContent=text.trim().split(/\s+/).length
+        }
+        letterCount.textContent=(text.match(/[a-zA-Z]/g)|| []).length
+        
+    });
+        
+        
+    </script>
+</body>
+</html>
